@@ -1,0 +1,185 @@
+/* ==========================================
+   Torrema Animations
+========================================== */
+
+/* Fade */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fade Up */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade Down */
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade Left */
+
+@keyframes fadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade Right */
+
+@keyframes fadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Float */
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* Pulse Glow */
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+  }
+
+  to {
+    box-shadow:
+      0 0 20px rgba(59, 130, 246, 0.6),
+      0 0 40px rgba(139, 92, 246, 0.4);
+  }
+}
+
+/* Rotate */
+
+@keyframes rotateSlow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scale */
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Gradient */
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ==========================
+   Utility Classes
+========================== */
+
+.fade-in {
+  animation: fadeIn .8s ease forwards;
+}
+
+.fade-up {
+  animation: fadeUp .8s ease forwards;
+}
+
+.fade-down {
+  animation: fadeDown .8s ease forwards;
+}
+
+.fade-left {
+  animation: fadeLeft .8s ease forwards;
+}
+
+.fade-right {
+  animation: fadeRight .8s ease forwards;
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.rotate-slow {
+  animation: rotateSlow 20s linear infinite;
+}
+
+.scale-in {
+  animation: scaleIn .5s ease forwards;
+}
+
+.gradient-animation {
+  background-size: 300% 300%;
+  animation: gradientMove 8s ease infinite;
+}
