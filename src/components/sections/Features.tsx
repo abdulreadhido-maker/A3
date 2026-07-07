@@ -135,3 +135,150 @@ function Features() {
             gap: "30px"
           }}
         >
+          {features.map((feature, index) => {
+
+            const Icon = feature.icon;
+
+            return (
+
+              <motion.div
+
+                key={feature.title}
+
+                initial={{
+                  opacity: 0,
+                  y: 40
+                }}
+
+                whileInView={{
+                  opacity: 1,
+                  y: 0
+                }}
+
+                transition={{
+                  duration: .5,
+                  delay: index * 0.08
+                }}
+
+                whileHover={{
+                  y: -10,
+                  scale: 1.02
+                }}
+
+                className="glass"
+
+                style={{
+                  borderRadius: "24px",
+                  padding: "32px",
+                  transition: ".3s"
+                }}
+              >
+
+                <div
+                  style={{
+                    width: "72px",
+                    height: "72px",
+                    borderRadius: "18px",
+                    background:
+                      "linear-gradient(135deg,#3b82f6,#8b5cf6)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: "24px"
+                  }}
+                >
+                  <Icon
+                    size={34}
+                    color="white"
+                  />
+                </div>
+
+                <h3
+                  style={{
+                    marginBottom: "16px"
+                  }}
+                >
+                  {feature.title}
+                </h3>
+
+                <p
+                  style={{
+                    color: "var(--text-secondary)",
+                    lineHeight: 1.8
+                  }}
+                >
+                  {feature.description}
+                </p>
+
+              </motion.div>
+
+            );
+
+          })}
+                  </div>
+
+        {/* Bottom CTA */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 40
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0
+          }}
+          transition={{
+            duration: 0.7,
+            delay: 0.2
+          }}
+          style={{
+            marginTop: "80px",
+            textAlign: "center"
+          }}
+        >
+          <div
+            className="glass"
+            style={{
+              padding: "40px",
+              borderRadius: "24px",
+              maxWidth: "900px",
+              margin: "0 auto"
+            }}
+          >
+            <h2
+              style={{
+                marginBottom: "18px"
+              }}
+            >
+              Ready to Build Your Next Project?
+            </h2>
+
+            <p
+              style={{
+                maxWidth: "650px",
+                margin: "0 auto 30px",
+                color: "var(--text-secondary)",
+                lineHeight: 1.8
+              }}
+            >
+              Whether you need a business website, SaaS platform,
+              mobile application, AI integration or enterprise software,
+              Torrema can help turn your idea into reality.
+            </p>
+
+            <a
+              href="/contact"
+              className="btn-primary"
+            >
+              Start Your Project
+            </a>
+          </div>
+        </motion.div>
+
+      </div>
+    </section>
+  );
+}
+
+export default Features;
