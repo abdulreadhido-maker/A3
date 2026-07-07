@@ -1,0 +1,97 @@
+:root {
+
+  /* ===========================
+     Torrema Colors
+  =========================== */
+
+  --primary: #3b82f6;
+  --primary-light: #60a5fa;
+  --primary-dark: #2563eb;
+
+  --secondary: #8b5cf6;
+  --secondary-light: #a78bfa;
+  --secondary-dark: #6d28d9;
+
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #06b6d4;
+
+  /* Background */
+
+  --background: #0f172a;
+  --surface: #111827;
+  --surface-2: #1e293b;
+  --card: #182234;
+
+  /* Text */
+
+  --text: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  /* Border */
+
+  --border: rgba(255,255,255,.08);
+
+  /* Shadows */
+
+  --shadow-sm: 0 4px 10px rgba(0,0,0,.15);
+  --shadow-md: 0 10px 25px rgba(0,0,0,.25);
+  --shadow-lg: 0 20px 45px rgba(0,0,0,.35);
+
+  --glow-blue: 0 0 25px rgba(59,130,246,.45);
+  --glow-purple: 0 0 25px rgba(139,92,246,.45);
+
+  /* Radius */
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  /* Transition */
+
+  --transition-fast: .2s ease;
+  --transition: .3s ease;
+  --transition-slow: .5s ease;
+
+}
+
+/* ===========================
+   Light Theme
+=========================== */
+
+.light {
+
+  --background: #ffffff;
+  --surface: #f8fafc;
+  --surface-2: #eef2ff;
+  --card: #ffffff;
+
+  --text: #111827;
+  --text-secondary: #374151;
+  --text-muted: #6b7280;
+
+  --border: rgba(15,23,42,.08);
+
+}
+
+/* ===========================
+   Dark Theme
+=========================== */
+
+.dark {
+
+  --background: #0f172a;
+  --surface: #111827;
+  --surface-2: #1e293b;
+  --card: #182234;
+
+  --text: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  --border: rgba(255,255,255,.08);
+
+}
