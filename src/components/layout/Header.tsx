@@ -6,392 +6,354 @@ import {
   Sun,
   Globe
 } from "lucide-react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import {
+  useState,
+  useEffect
+} from "react";
+import {
+  Link,
+  useLocation
+} from "react-router-dom";
 
 
-const links = [
+interface LinkItem {
+  name: string;
+  path: string;
+}
 
+
+const links: LinkItem[] = [
   {
-    name:"Home",
-    path:"/"
+    name: "Home",
+    path: "/"
   },
-
-
   {
-    name:"About",
-    path:"/about"
+    name: "About",
+    path: "/about"
   },
-
-
   {
-    name:"Services",
-    path:"/services"
+    name: "Services",
+    path: "/services"
   },
-
-
   {
-    name:"Pricing",
-    path:"/pricing"
+    name: "Pricing",
+    path: "/pricing"
   },
-
-
   {
-    name:"Portfolio",
-    path:"/portfolio"
+    name: "Portfolio",
+    path: "/portfolio"
   },
-
-
   {
-    name:"Blog",
-    path:"/blog"
+    name: "Blog",
+    path: "/blog"
   }
-
 ];
 
 
 
-function Navbar(){
+function Header() {
 
 
-const [open,setOpen] = useState(false);
+  const location = useLocation();
 
 
-const [dark,setDark] = useState(true);
+  const [open, setOpen] =
+    useState(false);
 
 
 
-return (
+  const [dark, setDark] =
+    useState<boolean>(() => {
 
-<header
+      if(typeof window === "undefined")
+        return true;
 
-style={{
 
-position:"fixed",
+      return (
+        localStorage.getItem("theme")
+        !==
+        "light"
+      );
 
-top:0,
+    });
 
-left:0,
 
-right:0,
 
-zIndex:1000,
 
-backdropFilter:"blur(15px)"
 
-}}
+  useEffect(()=>{
 
->
 
+    if(dark){
 
-<nav
+      document.documentElement.classList.add(
+        "dark"
+      );
 
-className="glass"
 
-style={{
+      localStorage.setItem(
+        "theme",
+        "dark"
+      );
 
-margin:"15px",
 
-padding:"15px 25px",
+    }else{
 
-borderRadius:"20px",
 
-display:"flex",
+      document.documentElement.classList.remove(
+        "dark"
+      );
 
-justifyContent:"space-between",
 
-alignItems:"center"
+      localStorage.setItem(
+        "theme",
+        "light"
+      );
 
-}}
 
->
+    }
 
 
-<Link
+  },[dark]);
 
-to="/"
 
-className="text-gradient"
 
-style={{
 
-fontSize:"28px",
 
-fontWeight:800
+  useEffect(()=>{
 
-}}
+    setOpen(false);
 
->
+  },[location]);
 
-Torrema
 
-</Link>
 
 
 
-<div
 
-className="desktop-menu"
 
-style={{
+  return (
 
-display:"flex",
+    <header className="header">
 
-gap:"25px"
 
-}}
+      <nav className="header-container glass">
 
->
-  {links.map((link)=>{
 
+        {/* Logo */}
 
-return (
+        <Link
+          to="/"
+          className="logo text-gradient"
+        >
 
+          Torrema
 
-<Link
+        </Link>
 
-key={link.path}
 
-to={link.path}
 
-style={{
 
-color:"var(--text)",
 
-textDecoration:"none",
+        {/* Navigation */}
 
-fontWeight:500
+        <div className="nav-links">
 
-}}
 
->
+          {
+            links.map((link)=>(
 
-{link.name}
+              <Link
 
-</Link>
+                key={link.path}
 
+                to={link.path}
 
-);
+                className="nav-item"
 
+              >
 
-})}
+                {link.name}
 
+              </Link>
 
+            ))
+          }
 
-</div>
 
+        </div>
 
 
 
-<div
 
-style={{
 
-display:"flex",
 
-alignItems:"center",
+        {/* Actions */}
 
-gap:"15px"
+        <div className="header-actions">
 
-}}
 
->
 
+          <button
 
-<button
+            className="icon-button"
 
-onClick={()=>setDark(!dark)}
+            onClick={()=>
+              setDark(!dark)
+            }
 
-style={{
+            aria-label="Theme"
 
-background:"transparent",
+          >
 
-border:"none",
+            {
 
-cursor:"pointer",
+              dark
 
-color:"var(--text)"
+              ?
 
-}}
+              <Sun size={22}/>
 
->
+              :
 
-{
+              <Moon size={22}/>
 
-dark
+            }
 
-?
 
-<Sun size={22}/>
+          </button>
 
-:
 
-<Moon size={22}/>
 
-}
 
 
-</button>
 
+          <button
 
+            className="icon-button"
 
+            aria-label="Language"
 
+          >
 
-<button
+            <Globe size={22}/>
 
-style={{
 
-background:"transparent",
+          </button>
 
-border:"none",
 
-cursor:"pointer",
 
-color:"var(--text)"
 
-}}
 
->
 
-<Globe size={22}/>
+          <button
 
-</button>
+            className="icon-button mobile-button"
 
+            onClick={()=>
+              setOpen(!open)
+            }
 
+            aria-label="Menu"
 
-<button
+          >
 
-className="mobile-menu-btn"
+            {
 
-onClick={()=>setOpen(!open)}
+              open
 
-style={{
+              ?
 
-background:"transparent",
+              <X size={25}/>
 
-border:"none",
+              :
 
-cursor:"pointer",
+              <Menu size={25}/>
 
-display:"none"
+            }
 
-}}
 
->
+          </button>
 
 
-{
 
-open
+        </div>
 
-?
 
-<X size={25}/>
+      </nav>
 
-:
 
-<Menu size={25}/>
 
-}
 
 
-</button>
 
 
+      {
+        open && (
 
-</div>
 
+          <motion.div
 
-</nav>
-  {
+            className="mobile-menu glass"
 
-open && (
 
-<motion.div
+            initial={{
+              opacity:0,
+              y:-20
+            }}
 
-initial={{
+            animate={{
+              opacity:1,
+              y:0
+            }}
 
-opacity:0,
+            transition={{
+              duration:.3
+            }}
 
-height:0
+          >
 
-}}
 
-animate={{
+            {
 
-opacity:1,
+              links.map((link)=>(
 
-height:"auto"
 
-}}
+                <Link
 
-className="glass"
+                  key={link.path}
 
-style={{
+                  to={link.path}
 
-margin:"0 15px",
+                  className="nav-item"
 
-padding:"25px",
+                >
 
-borderRadius:"20px",
+                  {link.name}
 
-display:"flex",
 
-flexDirection:"column",
+                </Link>
 
-gap:"20px"
 
-}}
+              ))
 
->
+            }
 
 
-{links.map((link)=>(
+          </motion.div>
 
 
-<Link
+        )
+      }
 
-key={link.path}
 
-to={link.path}
 
-onClick={()=>setOpen(false)}
+    </header>
 
-style={{
-
-color:"var(--text)",
-
-textDecoration:"none"
-
-}}
-
->
-
-{link.name}
-
-</Link>
-
-
-))}
-
-
-</motion.div>
-
-
-)
-
+  );
 
 }
 
 
 
-</header>
-
-
-);
-
-
-}
-
-
-export default Navbar;
+export default Header;
